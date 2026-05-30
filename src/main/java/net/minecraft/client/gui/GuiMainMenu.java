@@ -575,9 +575,9 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         float f = 1.8F - MathHelper.abs(MathHelper.sin((float)(Minecraft.getSystemTime() % 1000L) / 1000.0F * (float)Math.PI * 2.0F) * 0.1F);
         f = f * 100.0F / (float)(this.fontRendererObj.getStringWidth(this.splashText) + 32);
         GlStateManager.scale(f, f, f);
-        this.drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
+        this.drawCenteredString(this.fontRendererObj, this.splashText, 50, -8, -256);
         GlStateManager.popMatrix();
-        String s = "Minecraft 1.8.9";
+        String s = "VNXXRZ Client - 1.8.9";
 
         if (this.mc.isDemo())
         {
@@ -609,7 +609,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
             this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
         }
 
-        String s2 = "Copyright Mojang AB. Do not distribute!";
+        String s2 = "";
         this.drawString(this.fontRendererObj, s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, this.height - 10, -1);
 
         if (this.openGLWarning1 != null && this.openGLWarning1.length() > 0)

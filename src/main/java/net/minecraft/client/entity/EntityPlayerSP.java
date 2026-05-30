@@ -51,6 +51,8 @@ import net.minecraft.util.MovementInput;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
+import vnxxrz.VnnxxrzClient;
+import vnxxrz.event.impl.EventUpdate;
 
 public class EntityPlayerSP extends AbstractClientPlayer
 {
@@ -111,6 +113,10 @@ public class EntityPlayerSP extends AbstractClientPlayer
     {
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ)))
         {
+
+            // TUTORIAL
+            VnnxxrzClient.BUS.post(new EventUpdate());
+
             super.onUpdate();
 
             if (this.isRiding())

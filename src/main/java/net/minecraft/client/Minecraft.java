@@ -1,5 +1,6 @@
 package net.minecraft.client;
 
+import vnxxrz.VnnxxrzClient;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -184,6 +185,7 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
+import vnxxrz.event.impl.EventKey;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
@@ -485,6 +487,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
         this.checkGLError("Post startup");
         this.ingameGUI = new GuiIngame(this);
+
+        // TUTORIAL INICIO
+       VnnxxrzClient.INSTANCE.init();
+        // TUTORIAL FIM
 
         if (this.serverName != null)
         {
@@ -938,6 +944,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     {
         try
         {
+
+            // TUTORIAL INICIO
+            VnnxxrzClient.INSTANCE.shutdown();
+            // TUTORIAL FIM
+
             this.stream.shutdownStream();
             logger.info("Stopping!");
 
@@ -1793,6 +1804,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
+                        // TUTORIAL
+                        VnnxxrzClient.BUS.post(new EventKey(k));
+
                         if (k == 1)
                         {
                             this.displayInGameMenu();

@@ -43,6 +43,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.border.WorldBorder;
 import net.optifine.CustomColors;
+import vnxxrz.VnnxxrzClient;
+import vnxxrz.event.impl.Event2D;
 
 public class GuiIngame extends Gui
 {
@@ -326,6 +328,9 @@ public class GuiIngame extends Gui
         {
             this.overlayPlayerList.updatePlayerList(false);
         }
+
+        // Tutorial Start
+        VnnxxrzClient.BUS.post(new Event2D(scaledresolution));
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
